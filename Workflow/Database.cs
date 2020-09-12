@@ -26,6 +26,7 @@ namespace Workflow
         public int? PhanXuLyNhiemVuChaId { get; set; }
         public VaiTroXuLy VaiTroXuLy { get; set; }
         public TrangThaiPhanXuLy TrangThai { get; set; }
+        public string WorkflowId { get; set; }
     }
 
     public enum VaiTroXuLy

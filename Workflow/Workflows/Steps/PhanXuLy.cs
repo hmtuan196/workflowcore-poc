@@ -11,10 +11,7 @@ namespace Workflow.Workflows.Steps
 
         public PhanXuLyNhiemVu PhanXuLyNhiemVu { get; set; }
 
-        public PhanXuLy(ILogger<PhanXuLy> logger)
-        {
-            _logger = logger;
-        }
+        public PhanXuLy(ILogger<PhanXuLy> logger) => _logger = logger;
 
         public override ExecutionResult Run(IStepExecutionContext context)
         {
@@ -22,13 +19,13 @@ namespace Workflow.Workflows.Steps
 
             if (phanXuLyCha.VaiTroXuLy == VaiTroXuLy.PhoiHop)
             {
-                _logger.LogWarning($"Phối hợp không được Phân xử lý... {PhanXuLyNhiemVu.PhanXuLyNhiemVuChaId}");
+                _logger.LogWarning($"Phối hợp không được Phân xử lý... {PhanXuLyNhiemVu.Id} - nhiệm vụ {PhanXuLyNhiemVu.NhiemVuId}");
                 return ExecutionResult.Next();
             }
 
             Database.PhanXuLyNhiemVus.Add(PhanXuLyNhiemVu);
 
-            _logger.LogInformation($"Phân xử lý... {PhanXuLyNhiemVu.Id}");
+            _logger.LogInformation($"Phân xử lý... {PhanXuLyNhiemVu.Id} - nhiệm vụ {PhanXuLyNhiemVu.NhiemVuId}");
             return ExecutionResult.Next();
         }
     }

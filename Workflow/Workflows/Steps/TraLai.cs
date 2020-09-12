@@ -11,10 +11,7 @@ namespace Workflow.Workflows.Steps
 
         public PhanXuLyNhiemVu PhanXuLyNhiemVu { get; set; }
 
-        public TraLai(ILogger<TraLai> logger)
-        {
-            _logger = logger;
-        }
+        public TraLai(ILogger<TraLai> logger) => _logger = logger;
 
         public override ExecutionResult Run(IStepExecutionContext context)
         {
@@ -22,14 +19,14 @@ namespace Workflow.Workflows.Steps
 
             if (phanXuLy.VaiTroXuLy == VaiTroXuLy.PhoiHop)
             {
-                _logger.LogWarning($"Phối hợp không được Trả lại... {PhanXuLyNhiemVu.Id}");
+                _logger.LogWarning($"Phối hợp không được Trả lại... {PhanXuLyNhiemVu.Id} - nhiệm vụ {PhanXuLyNhiemVu.NhiemVuId}");
                 return ExecutionResult.Next();
             }
 
             // trả lại
             phanXuLy.TrangThai = TrangThaiPhanXuLy.DaTraLai;
 
-            _logger.LogInformation($"Trả lại... {PhanXuLyNhiemVu.Id}");
+            _logger.LogInformation($"Trả lại... {PhanXuLyNhiemVu.Id} - nhiệm vụ {PhanXuLyNhiemVu.NhiemVuId}");
             return ExecutionResult.Next();
         }
     }

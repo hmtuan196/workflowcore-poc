@@ -25,7 +25,7 @@ namespace Workflow.Workflows.Steps
 
             if (PhanXuLyNhiemVu.VaiTroXuLy == VaiTroXuLy.PhoiHop)
             {
-                _logger.LogWarning($"Phối hợp không được Phân xử lý... {PhanXuLyNhiemVu.Id}");
+                _logger.LogWarning($"Phối hợp không được Phân xử lý... {PhanXuLyNhiemVu.Id} - nhiệm vụ {PhanXuLyNhiemVu.NhiemVuId}");
                 return ExecutionResult.Next();
             }
 
@@ -38,7 +38,7 @@ namespace Workflow.Workflows.Steps
 
             _host.PersistenceStore.PersistWorkflow(nhiemVuWorkflow);
 
-            _logger.LogInformation($"Cập nhật... {PhanXuLyNhiemVu.Id}");
+            _logger.LogInformation($"Cập nhật... {PhanXuLyNhiemVu.Id} - nhiệm vụ {PhanXuLyNhiemVu.NhiemVuId}");
             return ExecutionResult.Next();
         }
     }
